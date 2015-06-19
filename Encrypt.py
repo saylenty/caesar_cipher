@@ -14,9 +14,17 @@ def main():
         print("shift must be an integer value > 0 and < {}".format(26))
         return
     for c in message:
-        if ord(c) <= ord('z') - shift:
-            print(chr(ord(c) + shift), end='')
+        if c.islower():
+            if ord(c) <= ord('z') - shift:
+                print(chr(ord(c) + shift), end='')
+            else:
+                print(chr(ord('a') + shift - (ord('z') - ord(c)) - 1), end='')
+        elif c.isupper():
+            if ord(c) <= ord('Z') - shift:
+                print(chr(ord(c) + shift), end='')
+            else:
+                print(chr(ord('A') + shift - (ord('Z') - ord(c)) - 1), end='')
         else:
-            print(chr(ord('a') + shift - (ord('z') - ord(c)) - 1), end='')
+            print(c, end='')
 
 if __name__ == "__main__": main()
